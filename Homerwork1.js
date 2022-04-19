@@ -4,25 +4,11 @@
 let obj = {
     a : "1",
     b : "2",
-    c : "2",
+    c : "5",
 }
-let count = 0
 let objReversed = {}
-let arr = []
-for(let key in obj){
-    for(let k in obj){
-        if( obj[key] === obj[k]){
-        count++
-    }
-        if(count > 2){
-                arr.push(key)
-                objReversed[obj[key]] = arr
-                count --
-                count--
-            }
-    else{
-        objReversed[obj[key]] = key}
-    }
+for (let key in obj){
+    objReversed[obj[key]] = key
 }
 console.log(objReversed)
 
