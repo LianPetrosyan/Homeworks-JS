@@ -55,7 +55,7 @@ function sumOfDigits(number){
     while( number!==0 ){
         number = Math.trunc(number/10)
         sum=sum+number%10
-    }if(sum>10){
+    }if(sum>=10){
         sum = sumOfDigits(sum)
     }return sum
 }
