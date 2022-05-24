@@ -56,7 +56,7 @@ let createTree = (arr, id = "root") =>
 // 2. Write a JavaScript function to get all possible subsets of given length of the given
 // array.  Assume that all elements in the array are unique.
 
-// kisat u sxal :)
+// kisat
 
 function factorial(n){
     if(n == 0 || n == 1){
