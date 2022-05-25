@@ -56,18 +56,48 @@ let createTree = (arr, id = "root") =>
 // 2. Write a JavaScript function to get all possible subsets of given length of the given
 // array.  Assume that all elements in the array are unique.
 
-function subArrays(arr, length) {
-  let combinations = [];
-  if (length === 1) {
-    return
-  } 
-  else {
-    for (let i = -1; i < arr.length-1; i++) {
-        let sub = subArrays(arr.slice(i + 1), length)
-        combinations.push(sub)
+// kisat
+
+let arr = [1,2,3,4,5]
+target = 3
+function factorial(n){
+    if(n == 0 || n == 1){
+        return 1;
+    }else{
+        return n * factorial(n-1);
     }
-  }
-  return combinations
+}
+let numberOfCombination = factorial(arr.length) / (factorial(target) * factorial(arr.length - target))
+
+function skipIndexAndSlice(arr, indexToSkip){
+    let arrWithSkippedIndex = []
+    for(let i = 0 ; i < arr.length; i++ ){
+        if(i !== indexToSkip){
+            arrWithSkippedIndex.push(arr[i])
+        }
+    }arrWithSkippedIndex.length = target-1
+    return arrWithSkippedIndex
+}
+
+let count = 0, i = 0 , j=-1
+let subArr = []
+let result = []
+function subArrays (arr, target) {
+    if(count === numberOfCombination){
+        return result
+    }
+    if(j >= target){
+        return result
+    }
+    count++
+    let concat = [].concat(skipIndexAndSlice(arr, j))
+    for(let x = arr.length-target+1; x < arr.length ; x++){
+        subArr = concat.concat(arr[x])
+        result.push(subArr)
+    }
+    j++
+    subArrays(arr, target)  
+    return result
 }
 
 // 3. Create a decorator delay(f, ms) that delays each call of ‘f’ by ‘ms’ milliseconds.
