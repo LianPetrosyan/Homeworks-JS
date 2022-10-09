@@ -6,11 +6,20 @@ let obj = {
     b : "2",
     c : "5",
 }
-let objReversed = {}
-for (let key in obj){
-    objReversed[obj[key]] = key
+
+function invertObject(obj){
+    let objInvert = {}
+    for(let key in obj){
+        if(objInvert[obj[key]] === undefined){
+            objInvert[obj[key]] = key
+        }
+        else{
+            let arr = [objInvert[obj[key]]].concat(key)
+            objInvert[obj[key]] = arr
+        }
+    }
+    return objInvert
 }
-console.log(objReversed)
 
 
 // 2. Given two objects. Write a function that performs shallow compare.
