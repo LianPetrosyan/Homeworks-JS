@@ -65,18 +65,12 @@ arr.filter(function fn(el, index, arr){
 
 // 5. Implement “map” method for plain objects (same as Array map method.)
 
-
-//kisat
-function customMap(fn){
-    if (typeof fn !== 'function'){
-        console.log(fn +' is not function')
-        return
+function customMap(obj, callback) {
+  const mappedObj = {};
+  for (const key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      mappedObj[key] = callback(obj[key], key, obj);
     }
-    let result = {}
-    for (let key in this){
-        if(this.hasOwnProperty(key)){
-            const resultFromCallBackFunction = fn(key,this[key],this)
-
-        }
-    }return result
+  }
+  return mappedObj;
 }
