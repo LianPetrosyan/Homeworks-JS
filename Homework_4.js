@@ -4,25 +4,21 @@
 // array.
 // Assume that all elements in the array are unique.
 
-//kisat e, menak 2 hati depq
+  function generate(current, start) {
+    if (current.length === length) {
+      subsets.push([...current]);
+      return;
+    }
+    for (let i = start; i < array.length; i++) {
+      current.push(array[i]);
+      generate(current, i + 1);
+      current.pop();
+    }
+  }
 
-let result = []
-function foo (arr, target) {
-    if(arr.length === 1){
-        return result
-    }
-    for(let i = 1 ; i < arr.length ; i++){
-        let res = []
-        res.push(arr[0], arr[i])
-        result = [...result,res]
-    }
-    arr.shift()
-    foo(arr)
-    return result
+  generate([], 0);
+  return subsets;
 }
-foo([1,2,3,4,5],2)
-
-
 
 // 3. Write a recursive function to determine whether all digits of the number are odd or
 // not.
